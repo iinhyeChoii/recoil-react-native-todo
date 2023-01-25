@@ -12,7 +12,7 @@ type Props = PressableProps &
 
 const activeOpacity = 0.6;
 
-function Pressable({children, style, ...otherProps}: Props) {
+export default function Pressable({children, style, ...otherProps}: Props) {
   const _style = useCallback(
     ({pressed}: {pressed: boolean}) => [
       {opacity: pressed ? activeOpacity : 1},
@@ -27,5 +27,3 @@ function Pressable({children, style, ...otherProps}: Props) {
     </RNPressable>
   );
 }
-
-export default Pressable;
