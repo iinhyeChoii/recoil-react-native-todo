@@ -1,7 +1,11 @@
 # ✅ Recoil Todo App
 
 [Recoil 공식 문서](https://recoiljs.org/)에서 제공하는 todo 리스트 애플리케이션 예시를 
-React Native와 TypeScript를 사용해 만들었습니다. 
+React Native와 TypeScript를 사용해 만들었습니다.
+
+
+>[Recoil 공식 문서 - Basic Tutorial](https://recoiljs.org/docs/basic-tutorial/intro)의 내용을 번역했습니다.
+>예시 소스 코드가 React로 구현되어 있어 React Native와 타입 스크립트를 적용하여 일부 수정했습니다.
 
 Recoil API의 atoms, selectors, atom families, hooks를 사용했습니다.
 
@@ -190,9 +194,9 @@ const filteredTodoListState = selector({
 
 `filteredTodoListState`는 내부적으로 `todoListFilterState`와 `todoListState` 두 가지 값에 의존성을 갖기 때문에 둘 중 하나라도 값이 바뀌면 재실행 되게 됩니다. 
 
->컴포넌트 관점에서 보면 atom을 읽을 때 사용하는 훅을 사용해서 selector도 읽을 수 있습니다.
+>컴포넌트 관점에서 보면 atom을 읽을 때 사용하는 훅으로 selector도 읽어 올 수 있습니다.
 >그러나 일부 훅(useRecoilState())은 쓰기 가능 상태에서만 작동한다는 점을 유의해야 합니다.
->모든 atom은 쓰기가 가능한 상태이지만, selector는 get과 set 속성을 둘 다 가지고 있는 selector만 쓰기 가능한 상태로 간주됩니다. 
+>모든 atom은 쓰기 가능한 상태이지만, selector는 get과 set 속성을 둘 다 가지고 있는 selector의 경우에만 쓰기 가능한 상태로 간주됩니다. 
 >이 주제에 대해서 더 많은 정보를 보고 싶다면 [Core Concepts](https://recoiljs.org/docs/introduction/core-concepts/) 페이지를 참고하세요.
 
 필터링 된 Todo 리스트를 보여주는 것은 `TodoList` 컴포넌트에서 한 줄만 바꾸면 될 만큼 간단합니다.
