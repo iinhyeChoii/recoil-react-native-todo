@@ -1,10 +1,10 @@
 import React from 'react';
-import {GestureResponderEvent, ViewStyle} from 'react-native';
+import {GestureResponderEvent, PressableProps, ViewStyle} from 'react-native';
 import Pressable from '../Pressable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ItemContainer} from './styled';
 
-type Props = {
+type Props = PressableProps & {
   name: string;
   color?: string;
   onPress: (event: GestureResponderEvent) => void;
@@ -12,10 +12,10 @@ type Props = {
 };
 
 export default function IconButton(props: Props) {
-  const {name, color, style, onPress} = props;
+  const {name, color, style, onPress, ...otherProps} = props;
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} {...otherProps}>
       <ItemContainer style={style}>
         <Icon name={name} size={25} color={'blue'} />
       </ItemContainer>

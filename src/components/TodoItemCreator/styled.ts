@@ -4,7 +4,7 @@ export const AddNewItemContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
-  margin: 20px;
+  margin: 20px 20px 0 20px;
 `;
 
 export const NewItemTextInput = styled.TextInput`

@@ -1,25 +1,15 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {SafeAreaView, StatusBar} from 'react-native';
 import {RecoilRoot} from 'recoil';
 import TodoList from './screens/TodoList';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
     <RecoilRoot>
-      {/*<SafeAreaView style={backgroundStyle}>*/}
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <TodoList />
-      {/*</SafeAreaView>*/}
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar barStyle={'dark-content'} />
+        <TodoList />
+      </SafeAreaView>
     </RecoilRoot>
   );
 }

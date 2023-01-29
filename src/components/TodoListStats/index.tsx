@@ -2,6 +2,7 @@ import React from 'react';
 import {useRecoilValue} from 'recoil';
 import {todoListStatsState} from '../../atoms';
 import {Text} from 'react-native';
+import {StatsContainer, Row, StatsTitle, StatsValue} from './styled';
 
 /**
  * totalNum: todo 항목들의 총개수
@@ -16,11 +17,23 @@ export default function TodoListStats() {
   const formattedPercentCompleted = Math.round(percentCompleted * 100);
 
   return (
-    <>
-      <Text>Total items: {totalNum}</Text>
-      <Text>Items completed: {totalCompletedNum}</Text>
-      <Text>Items not completed: {totalUncompletedNum}</Text>
-      <Text>Percent completed: {formattedPercentCompleted}</Text>
-    </>
+    <StatsContainer>
+      <Row>
+        <StatsTitle>Total</StatsTitle>
+        <StatsValue>{totalNum}</StatsValue>
+      </Row>
+      <Row>
+        <StatsTitle>Completed</StatsTitle>
+        <StatsValue>{totalCompletedNum}</StatsValue>
+      </Row>
+      <Row>
+        <StatsTitle>Uncompleted</StatsTitle>
+        <StatsValue>{totalUncompletedNum}</StatsValue>
+      </Row>
+      <Row>
+        <StatsTitle>Completed percent</StatsTitle>
+        <StatsValue>{formattedPercentCompleted}%</StatsValue>
+      </Row>
+    </StatsContainer>
   );
 }

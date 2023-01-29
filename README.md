@@ -1,11 +1,14 @@
-# ✅ Recoil Todo App
+# ✅ Recoil Todo App (with React Native, TypeScript and Styled-component)
 
 [Recoil 공식 문서](https://recoiljs.org/)에서 제공하는 todo 리스트 애플리케이션 예시를 
-React Native와 TypeScript를 사용해 만들었습니다.
-
+React Native와 TypeScript를 그리고 Styled-component를 사용해 만들었습니다.
 
 >[Recoil 공식 문서 - Basic Tutorial](https://recoiljs.org/docs/basic-tutorial/intro)의 내용을 번역했습니다.
->예시 소스 코드가 React로 구현되어 있어 React Native와 타입 스크립트를 적용하여 일부 수정했습니다.
+>예시 소스 코드가 React로 구현되어 있어 일부 수정되었음을 참고해주세요.
+
+| iOS | Android |
+| --- | --- |
+| <img src="./screenshots/ios.png" width="320"/> | <img src="./screenshots/android.png" width="320"/> |
 
 Recoil API의 atoms, selectors, atom families, hooks를 사용했습니다.
 
@@ -27,10 +30,11 @@ type Todo = {
 ```
 
 ## Atoms
-Atoms는 애플리케이션 상태의 "the source of truth"를 포함합니다. 
-Todo 리스트의 "the source of truth"는 object의 배열이 될 것이고, 각 object는 하나의 Todo 아이템에 해당 될 것입니다.
+Atoms는 애플리케이션 상태의 "the source of truth"를 담고 있습니다. 
+Todo 리스트의 "the source of truth"는 object 배열이 될 것이고, 각 object는 하나의 Todo 아이템에 해당 될 것입니다.
 
-`atom()` 함수를 이용해서 Todo `todoListState`라는 이름으로 리스트를 관리할 아톰을 생성합니다. 
+`atom()` 함수를 이용해서 `todoListState`라는 이름으로 Todo 리스트를 관리할 atom을 생성합니다.
+
 ```typescript
 export const todoListState = atom<Todo[]>({
   key: 'todoListState', 
@@ -38,8 +42,8 @@ export const todoListState = atom<Todo[]>({
 });
 ```
 
-atom에 유니크한 키를 설정하고 default 값으로 빈 배열을 설정합니다. 
-이 atom의 내용을 읽어오려면 TodoList 컴포넌트에서 useRecoilValue() 훅을 이용하면 됩니다.
+atom에 유니크한 키를 설정하고 default 값으로 빈 배열을 설정해 줍니다. 
+이 atom의 내용을 읽어오기 위해 TodoList 컴포넌트에서 useRecoilValue() 훅을 이용합니다.
 ```typescript
 function TodoList() {
   const todoList = useRecoilValue(todoListState);
@@ -92,7 +96,7 @@ function TodoItemCreator() {
   );
 }
 ```
-기존 Todo 리스트를 기준으로 새로운 todo list를 만들기 위해서 setter 함수의 updater 형식을 사용하는 것을 유의하세요.
+기존 Todo 리스트를 기준으로 새로운 Todo 리스트를 만들기 위해서 setter 함수의 updater 형식을 사용하는 점을 유의하세요.
 
 `TodoItem` 컴포넌트는 Todo 아이템의 값을 보여주는 동시에 text 값을 바꾸거나 삭제할 수 있습니다.
 `todoListState`를 읽어오고, 아이템의 text를 업데이트 하고, 완료 여부를 표시하고, 삭제하기 위한 setter 함수를 불러오기 위해 `useRecoilState()`를 사용합니다.
@@ -149,14 +153,14 @@ function removeItemAtIndex(arr: Todo[], index: number) {
 ```
 
 이렇게 완벽하게 작동하는 Todo 리스트가 완성되었습니다. 
-다음 섹션에서는 seletors를 사용해서 list를 더 높은 수준으로 만들 수 있는 방법에 대해서 알아봅니다.
+다음 섹션에서는 seletors를 사용해서 리스트를 더 높은 수준으로 만들 수 있는 방법에 대해서 알아봅니다.
 
 ## Seletors
 selector는 파생된 상태(derived state)의 조각입니다. 
 '파생된 상태'는 상태를 순수 함수를 통해 가공 후 나온 결과물, 즉, 기존 상태에서 새롭게 파생된 값으로 생각할 수 있습니다.
 
 파생된 상태가 강력한 컨셉인 이유는 다른 데이터에 따라 역동적으로 변하는 데이터를 만들 수 있기 때문입니다.
-Todo List를 기준으로 다음을 파생된 상태로 생각해볼 수 있습니다.
+Todo 리스트를 기준으로 다음을 '파생된 상태'로 생각해볼 수 있습니다.
 - 필터링 된 Todo 리스트
   - 전체 Todo 리스트를 특정 기준에 따라 필터링해서 새로운 리스트를 파생하는 경우(에를 들어, 이미 완료 된 아이템만 필터링해서 조회)
 - Todo 리스트 통계 자료

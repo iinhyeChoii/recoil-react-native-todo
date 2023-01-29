@@ -26,7 +26,7 @@ export default function TodoItemCreator() {
         onChangeText={setInputValue}
         placeholder={'Add a new Todo'}
       />
-      <IconButton name={'add'} onPress={addItem} />
+      <IconButton name={'add'} onPress={addItem} disabled={inputValue == ''} />
     </AddNewItemContainer>
   );
 }
